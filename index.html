@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nnesa Reads | Book Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+
+        html{
+            background-color: #000;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1.2s ease-out;
+        }
+        .animate-fadeUp {
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        .card-content {
+            display: none;
+        }
+
+        .card.active .card-content {
+            display: block;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="min-h-screen overflow-x-hidden bg-gradient-to-br from-blue-600 via-black to-blue-900 text-white [overscroll-behavior:none]">
+
+
+    <!-- Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold tracking-wide">Nnesa Reads</h1>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#trending" class="hover:text-blue-400 transition">Trendings</a>
+                <a href="#books" class="hover:text-blue-400 transition">Recommendations</a>
+                <a href="#review" class="hover:text-blue-400 transition">Reviews</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about"
+        class="min-h-screen flex items-center bg-gradient-to-b from-black via-blue-950 to-blue-800 text-white">
+        <div class="max-w-7xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-12 items-center">
+    
+            <!-- Gambar Profil -->
+            <div class="flex justify-start md:justify-center animate-fadeUp">
+                <img src="https://i.pinimg.com/1200x/07/d8/6f/07d86f48d58c134a93f8982ea46191d4.jpg"
+                    alt="Nnesa Portrait"
+                    class="w-72 h-72 md:w-80 md:h-80 rounded-2xl object-cover shadow-lg shadow-blue-500/30 border border-white/10">
+            </div>
+    
+            <!-- Teks Intro -->
+            <div class="backdrop-blur-sm bg-white/5 p-10 rounded-3xl shadow-lg shadow-blue-900/40 md:-ml-28 animate-fadeUp">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                    Hi, I’m <span class="text-blue-400">Akmal Mahesa</span>
+                </h1>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    A tech student who finds solace in the realm of fiction. When I’m not studying, I love reading fiction especially mystery, thriller, and psychology novels that make me forget about reality for a while.
+                </p>
+    
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <a href="https://instagram.com/amherdaka" class="text-blue-400 hover:text-blue-300 transition">Instagram</a>
+                    <a href="https://www.goodreads.com/user/show/194880236-nnesa" class="text-blue-400 hover:text-blue-300 transition">Goodreads</a>
+                    <a href="https://github.com/akmalmahesa" class="text-blue-400 hover:text-blue-300 transition">GitHub</a>
+                    <a href="https://id.linkedin.com/in/akmal-mahesa-herdaka-39ab64290" class="text-blue-400 hover:text-blue-300 transition">LinkedIn</a>
+                </div>
+    
+                <a href="#books"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition">
+                    Explore Recommendations
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trending Books Carousel -->
+    <section id="trending" class="py-24 bg-black/20 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6">
+            <h3 class="text-4xl font-bold mb-10 text-center">Trending Books</h3>
+    
+            <!-- Carousel container -->
+            <div id="carousel"
+                class="flex space-x-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 scrollbar-hide">
+    
+                <!-- The Midnight Library -->
+                <a href="https://www.goodreads.com/book/show/52578297-the-midnight-library" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1602190253i/52578297.jpg" alt="The Midnight Library"
+                        class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">The Midnight Library</h4>
+                        <p class="text-xs text-gray-400">Matt Haig</p>
+                    </div>
+                </a>
+    
+                <!-- The Housemaid -->
+                <a href="https://www.goodreads.com/book/show/60556912-the-housemaid?from_search=true&from_srp=true&qid=hXyc1zAkIP&rank=1" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1646534743i/60556912.jpg" alt="The Housemaid"
+                        class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">The Housemaid</h4>
+                        <p class="text-xs text-gray-400">Freida McFadden</p>
+                    </div>
+                </a>
+    
+                <!-- Not Quite Dead Yet -->
+                <a href="https://www.goodreads.com/book/show/220223963-not-quite-dead-yet?from_search=true&from_srp=true&qid=5BtdhBMtXI&rank=1" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1739418770i/220223963.jpg"
+                        alt="Not Quite Dead Yet" class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">Not Quite Dead Yet</h4>
+                        <p class="text-xs text-gray-400">Holly Jackson</p>
+                    </div>
+                </a>
+    
+                <!-- The Second Death Of Locke -->
+                <a href="https://www.goodreads.com/book/show/220137908-the-second-death-of-locke?ref=nav_sb_ss_1_15" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1757617909i/220137908.jpg"
+                        alt="The Second Death Of Locke" class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">The Second Death Of Locke</h4>
+                        <p class="text-xs text-gray-400">V.L Bovalino</p>
+                    </div>
+                </a>
+    
+                <!-- The River is Waiting -->
+                <a href="https://www.goodreads.com/book/show/219319489-the-river-is-waiting?ref=nav_sb_ss_1_16" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1749666637i/219319489.jpg"
+                        alt="The River is Waiting" class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">The River is Waiting</h4>
+                        <p class="text-xs text-gray-400">Wally Lamb</p>
+                    </div>
+                </a>
+    
+                <!-- The Guest List -->
+                <a href="https://www.goodreads.com/book/show/52656911-the-guest-list?ref=nav_sb_ss_1_14" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1591461181i/52656911.jpg" alt="The Guest List"
+                        class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">The Guest List</h4>
+                        <p class="text-xs text-gray-400">Lucy Foley</p>
+                    </div>
+                </a>
+    
+                <!-- Bad Things Happened in This Room -->
+                <a href="https://www.goodreads.com/book/show/222254096-bad-things-happened-in-this-room?ref=nav_sb_ss_1_13" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1733940528i/222254096.jpg"
+                        alt="Bad Things Happened in This Room" class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">Bad Things Happened in This Room</h4>
+                        <p class="text-xs text-gray-400">Marie Still</p>
+                    </div>
+                </a>
+    
+                <!-- House of Hearts -->
+                <a href="https://www.goodreads.com/book/show/222419309-house-of-hearts?ref=nav_sb_ss_3_15" target="_blank"
+                    class="flex-shrink-0 snap-center bg-gray-900/50 rounded-xl overflow-hidden shadow-lg w-52 hover:scale-105 transition duration-300">
+                    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1738939669i/222419309.jpg"
+                        alt="House of Hearts" class="w-full h-72 object-cover">
+                    <div class="p-3">
+                        <h4 class="font-bold text-sm">House of Hearts</h4>
+                        <p class="text-xs text-gray-400">Skyla Arndt</p>
+                    </div>
+                </a>
+    
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Book Grid -->
+    <section id="books" class="py-32 bg-black/30 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-16">Book Recommendations</h3>
+
+            <!-- Books Grid -->
+            <main class="max-w-7xl mx-auto p-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            
+                <!-- Card 1 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1554086139i/19288043.jpg" alt="Gone Girl"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Gone Girl</h3>
+                        <p class="text-xs text-gray-400">by Gillian Flynn</p>
+                    </div>
+            
+                    <!-- Hover -->
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            On the couple’s 5th wedding anniversary, Amy disappears and Nick becomes the prime suspect. A twisted portrait of
+                            marriage, identity and deceit.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.1 / 5</span>
+                    </div>
+                </div>
+            
+                <!-- Card 2 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1638425885i/16299.jpg" alt="And Then There Were None"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">And Then There Were None</h3>
+                        <p class="text-xs text-gray-400">by Agatha Christie</p>
+                    </div>
+            
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Ten strangers are invited to a secluded island under different pretexts. Upon arrival, they discover their mysterious
+                            host is missing and each guest is accused of a past crime. One by one, they start dying in ways eerily similar to a
+                            children’s nursery rhyme. With no way off the island and no one they can trust, paranoia grows as they realize the
+                            murderer must be among them.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.3 / 5</span>
+                    </div>
+                </div>
+            
+                <!-- Card 3 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1668181003i/62703226.jpg" alt="The Only One Left"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">The Only One Left</h3>
+                        <p class="text-xs text-gray-400">by Riley Sager</p>
+                    </div>
+            
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            A caregiver is assigned to an old mansion to look after a woman accused of murdering her family decades ago. As she
+                            learns more about the past, eerie clues suggest the real killer might still be alive — and closer than she thinks.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.13 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1679436159i/62984900.jpg" alt="Those Empty Eyes"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Those Empty Eyes</h3>
+                        <p class="text-xs text-gray-400">by Charlie Donlea</p>
+                    </div>
+                
+                    <!-- Hover -->
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            After surviving the brutal murder of her family, Alex Armstrong is wrongly accused and forced to rebuild her life under
+                            a new identity. Years later, while investigating a missing person case, she uncovers shocking links to her own past 
+                            and the real killer.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.15 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1579036753i/77203.jpg"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">The Kite Runner</h3>
+                        <p class="text-xs text-gray-400">by Khaled Hosseini</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Set in Afghanistan, the story follows Amir, a privileged boy, and Hassan, his loyal friend and servant’s son. After a
+                            heartbreaking betrayal, Amir’s guilt haunts him into adulthood, driving him on a journey of redemption amid his
+                            country’s turbulent history.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.35 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1642433141i/57390604.jpg" alt="As Long as the Lemon Trees Grow" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">As Long as the Lemon Trees Grow</h3>
+                        <p class="text-xs text-gray-400">by Zoulfa Katouh</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            During the Syrian revolution, Salama, a young pharmacy student turned volunteer, struggles between staying to help her
+                            war-torn country or fleeing for safety. Haunted by trauma and loss, she must find courage and hope amid devastation and
+                            love.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.46 / 5</span>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1516602134i/36393774.jpg" alt="Laut Bercerita"
+                        class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Laut Bercerita</h3>
+                        <p class="text-xs text-gray-400">by Leila S. Chudori</p>
+                    </div>
+                
+                    <!-- Hover -->
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Set in Indonesia during the late 1990s, the novel follows Biru Laut, a student activist who fights against an oppressive
+                            regime. Through his story and the grief of those left behind, it portrays the pain of loss, the cruelty of enforced
+                            disappearances, and the enduring hope for justice.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.62 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 8 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1444954928i/27213435.jpg" alt="Di Tanah Lada"
+                        class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Di Tanah Lada</h3>
+                        <p class="text-xs text-gray-400">by Ziggy Zezsyazeoviennazabrizkie</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Six-year-old Salva and ten-year-old P navigate life in a harsh housing complex after family loss, facing violence,
+                            poverty, and learning the meaning of friendship and love.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.22 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 9 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1367545443i/157993.jpg" alt="The Little Prince" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">The Little Prince</h3>
+                        <p class="text-xs text-gray-400">by Antoine de Saint-Exupéry</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            A young prince travels from planet to planet, meeting curious adults and learning lessons about love, friendship, and
+                            the essence of what truly matters in life.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.33 / 5</span>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388793265i/39988.jpg" alt="Matilda"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Matilda</h3>
+                        <p class="text-xs text-gray-400">by Roald Dahl</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Matilda, a brilliant and kind-hearted girl, uses her extraordinary intelligence and telekinetic powers to overcome
+                            neglectful parents and a cruel school headmistress, discovering the power of courage and self-belief.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.33 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 11 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1681839850i/21853621.jpg" alt="The Nightingale" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">The Nightingale</h3>
+                        <p class="text-xs text-gray-400">by Kristin Hannah</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            During World War II in Nazi-occupied France, two sisters fight to survive and resist in their own ways. One through quiet
+                            endurance, the other by joining the dangerous French Resistance. Revealing courage, sacrifice, and love.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.64 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 12 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1635768733i/34689759.jpg" alt="Gone With the Wind"
+                        class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Gone With the Wind</h3>
+                        <p class="text-xs text-gray-400">by Margaret Mitchell</p>
+                    </div>
+                
+                    <!-- Hover -->
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Set during the American Civil War and Reconstruction, Scarlett O’Hara, a strong-willed Southern woman, struggles to
+                            survive, protect her family, and navigate love and loss amid the collapse of her world.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.31 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 13 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1451445646i/18143977.jpg" alt="All the Light We Cannot See"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">All the Light We Cannot See</h3>
+                        <p class="text-xs text-gray-400">by Anthony Doerr</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            During World War II, blind French girl Marie-Laure and German boy Werner live vastly different lives that eventually
+                            intersect amid the chaos of war, revealing resilience, hope, and the unseen connections that bind people.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.31 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 14 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1733926500i/853510.jpg" alt="Murder on the Orient Express" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">Murder on the Orient Express</h3>
+                        <p class="text-xs text-gray-400">by Agatha Christie</p>
+                    </div>
+                
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            Just after midnight, a snowdrift stops the famous Orient Express in its tracks as it travels through the mountainous
+                            Balkans. The luxurious train is surprisingly full for the time of the year but, by the morning, it is one passenger
+                            fewer. An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.20 / 5</span>
+                    </div>
+                </div>
+                
+                <!-- Card 15 -->
+                <div
+                    class="group relative bg-gray-900/40 rounded-xl shadow-lg overflow-hidden backdrop-blur-sm hover:scale-105 transition duration-300 max-w-[180px] mx-auto">
+                    <div class="aspect-[2/3] overflow-hidden">
+                        <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1355929358i/8921.jpg" alt="The Hound of the Baskervilles"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-bold">The Hound of the Baskervilles</h3>
+                        <p class="text-xs text-gray-400">by Arthur Conan Doyle</p>
+                    </div>
+                
+                    <!-- Hover -->
+                    <div
+                        class="absolute inset-0 bg-white/95 text-gray-800 flex flex-col justify-center p-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <p class="text-xs mb-2">
+                            In this, one of the most famous of Doyle's mysteries, the tale of an ancient curse and a savage ghostly hound comes
+                            frighteningly to life. The gray towers of Baskerville Hall and the wild open country of Dartmoor will haunt the reader
+                            as Holmes and Watson seek to unravel the many secrets of the misty English bogs.
+                        </p>
+                        <span class="text-yellow-500 font-semibold text-sm">⭐ 4.14 / 5</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews / Blog Section -->
+    <section id="review" class="py-20 bg-gradient-to-b from-blue-950 via-black to-blue-900 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-10 text-center">Reviews</h2>
+            <div class="grid md:grid-cols-2 gap-8 mt-10">
+
+                <!-- Card 1 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-500">
+                    <img src="https://i.pinimg.com/1200x/44/4e/a2/444ea293ce4c37f673c4729e896cafeb.jpg" alt="Fiction Books"
+                        class="w-full h-64 object-cover object-center">
+                    <div class="p-6 flex flex-col justify-between h-48">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Why You Should Read More Fiction</h3>
+                            <p class="text-gray-300">Fiction opens your imagination and expands empathy. Here’s why it
+                                matters...</p>
+                        </div>
+                        <label for="modal-fiction"
+                            class="text-blue-400 font-semibold mt-3 hover:underline cursor-pointer">Read More</label>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-500">
+                    <img src="https://www.getlitt.co/blog/wp-content/uploads/2019/05/Sherlock-Holmes-Books-List-May-2019.jpg"
+                        alt="Sherlock Holmes" class="w-full h-64 object-cover object-center">
+                    <div class="p-6 flex flex-col justify-between h-48">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">My Comfort Books</h3>
+                            <p class="text-gray-300">When I need a dose of adventure and clever mysteries, I return to
+                                Sherlock Holmes...</p>
+                        </div>
+                        <label for="modal-holmes"
+                            class="text-blue-400 font-semibold mt-3 hover:underline cursor-pointer">Read More</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- modal -->
+    <input type="checkbox" id="modal-fiction" class="hidden peer/modal-fiction" />
+    <div
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden peer-checked/modal-fiction:flex items-center justify-center z-50">
+        <label for="modal-fiction" class="absolute inset-0 cursor-pointer"></label>
+        <div class="bg-white/10 text-white p-8 rounded-2xl max-w-xl mx-4 relative shadow-xl animate-fadeIn">
+            <h3 class="text-3xl font-bold mb-4 text-blue-400">Why You Should Read More Fiction</h3>
+            <p class="text-gray-200 leading-relaxed mb-6">
+                Fiction helps us understand emotions, motives, and complex human behaviors.
+                By immersing yourself in stories, you train your mind to empathize and imagine
+                new perspectives and skills that are vital in life.
+            </p>
+            <label for="modal-fiction"
+                class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg cursor-pointer">Close</label>
+        </div>
+    </div>
+
+    <input type="checkbox" id="modal-holmes" class="hidden peer/modal-holmes" />
+    <div
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden peer-checked/modal-holmes:flex items-center justify-center z-50">
+        <label for="modal-holmes" class="absolute inset-0 cursor-pointer"></label>
+        <div class="bg-white/10 text-white p-8 rounded-2xl max-w-xl mx-4 relative shadow-xl animate-fadeIn">
+            <h3 class="text-3xl font-bold mb-4 text-blue-400">My Comfort Books</h3>
+            <p class="text-gray-200 leading-relaxed mb-6">
+                The Sherlock Holmes series is timeless clever, thrilling, and oddly comforting.
+                Every mystery feels like a puzzle waiting to be solved, and Doyle’s storytelling
+                never fails to transport you into foggy Victorian London.
+            </p>
+            <label for="modal-holmes"
+                class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg cursor-pointer">Close</label>
+        </div>
+    </div>
+
+
+    
+
+    <!-- Footer -->
+    <footer class="py-10 text-center bg-black/30 backdrop-blur-md text-blue-200 text-sm">
+        <p>Nnesa Reads</p>
+    </footer>
+
+    <!-- JS for card toggle -->
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
